@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', "PageController@main");
+Route::get('/', "PageController@main")->name("main");
 
 Route::post('/upload', "FileController@parseFile");
+
+Route::get('/search', "PageController@search")->name("search");
+
+Route::get('/query', "PageController@query")->name("query");
+
+Route::fallback(function(){
+    return "Hello u should turn back";
+});

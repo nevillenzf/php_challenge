@@ -11,4 +11,12 @@ class PageController extends Controller
         return view('pages.main');
     }
 
+    function query(){
+        return view('pages.query');
+    }
+
+    function search(){
+        return view('pages.search');
+    }
+
 }

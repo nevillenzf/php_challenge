@@ -23,7 +23,7 @@
         @include('shared.navbar')
         @include('shared.sidebar')
         <div>
-            Upload XML, CSV file
+            Hey it's the querying page
         </div>
         <form action="upload" method="POST" enctype="multipart/form-data">
             <input type="file" name="zipcodes" class="inputWrapper"/>

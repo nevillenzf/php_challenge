@@ -15,16 +15,20 @@
         }
         .selected {
             color: rgba(108, 172, 67, 1);
-            list-style-type : disc;
+            border-right: solid;
         }
 
         .sbContent {
             list-style-type : none;
+            width: 100%;
         }
 
         a:hover{
             color: rgba(108, 172, 67, 1);
             transition: color 0.4s;
+        }
+        li {
+            font-size: 20px;
         }
 
     </style>

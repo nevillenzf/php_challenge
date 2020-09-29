@@ -19,9 +19,8 @@ Route::post('/upload', "FileController@parseFile");
 
 Route::get('/search', "PageController@search")->name("search");
 Route::get('/Search', "PageController@search");
-Route::post('/search', function(){
-    return "poop";
-});
+Route::post('/search', "PageController@searchDB");
+
 Route::get('/query', "PageController@query")->name("query");
 Route::get('/Query', "PageController@query");
 Route::post('/query', "PageController@queryAPI");

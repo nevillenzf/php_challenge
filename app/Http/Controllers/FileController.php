@@ -29,58 +29,24 @@ class FileController extends Controller
         if ($ext == $allowed[0]){
             //Parse Csv to an array
             $data = $this->csvToArray($file["zipcodes"]);
+
             foreach ($data as $row){
                 //Check if exist in table, if not, insert into table
-                $item = Zipcode::firstOrNew(
-                    ["ZipCode" => $row["ZipCode"]]
-                );
-                $item->City = $row["City"];
-                $item->MixedCity = $row["MixedCity"];
-                $item->StateCode = $row["StateCode"];
-
-                $item->County = $row["County"];
-                $item->MixedCounty = $row["MixedCounty"];
-                if (!$row["StateFIPS"]){
-                    $item->StateFIPS = null;
-                }
-                else {
-                    $item->StateFIPS = $row["StateFIPS"];
-                }
-
-                if (!$row["CountyFIPS"]){
-                    $item->CountyFIPS = null;
-                }
-                else {
-                    $item->CountyFIPS = $row["CountyFIPS"];
-                }
-
-                $item->Latitude = $row["Latitude"];
-                $item->Longitude = $row["Longitude"];
-                $item->GMT = $row["GMT"];
-                if ($row["DST"] == "Y"){
-                    $item->DST = true;
-                }
-                else {
-                    $item->DST = false;
-                }
-    
+                $item = $this->getZipcodeRow($row);
                 $item->save();
             };
 
-            print_r("ok cool");
+            return view("pages.redirect", ["failed" => false]); 
         }
         else if ($ext == $allowed[1]){
             //Parse xml to an array
-            //$data = $this->namespacedXMLToArray($file["zipcodes"]);
-            print_r("donions");
+            //$contents = file_get_contents($file["zipcodes"]);
+            $data = $this->namespacedXMLToArray($file["zipcodes"]->path());
+            print_r($data);
         }
         else {
-
             return view("pages.redirect", ["failed" => true]);
         }
-        
-        return view("pages.redirect");
-
     }
 
     private function csvToArray($filename = '', $delimiter = ',')
@@ -107,11 +73,47 @@ class FileController extends Controller
 
     private function namespacedXMLToArray($xml)
     {
+        $xml_str = simplexml_load_string($xml, "SimpleXMLElement", LIBXML_NOCDATA);
+        $json = json_encode($xml_str);
+        $array = json_decode($json,TRUE);
         // One function to both clean the XML string and return an array
-        return json_decode(json_encode(simplexml_load_string(file_get_contents($xml))), true);
+        return $array;
     }
 
-    private function addFileContent(){
+    private function getZipcodeRow($row){
+        $item = Zipcode::firstOrNew(
+            ["ZipCode" => $row["ZipCode"]]
+        );
+        $item->City = $row["City"];
+        $item->MixedCity = $row["MixedCity"];
+        $item->StateCode = $row["StateCode"];
 
+        $item->County = $row["County"];
+        $item->MixedCounty = $row["MixedCounty"];
+        if (!$row["StateFIPS"]){
+            $item->StateFIPS = null;
+        }
+        else {
+            $item->StateFIPS = $row["StateFIPS"];
+        }
+
+        if (!$row["CountyFIPS"]){
+            $item->CountyFIPS = null;
+        }
+        else {
+            $item->CountyFIPS = $row["CountyFIPS"];
+        }
+
+        $item->Latitude = $row["Latitude"];
+        $item->Longitude = $row["Longitude"];
+        $item->GMT = $row["GMT"];
+        if ($row["DST"] == "Y"){
+            $item->DST = true;
+        }
+        else {
+            $item->DST = false;
+        }
+
+        return $item;
     }
 }

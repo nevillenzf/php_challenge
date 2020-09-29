@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="icon" href="{{ URL::asset('/favicon.ico') }}" type="image/x-icon"/>
 
         <!-- Styles -->
         <style>
@@ -19,6 +20,35 @@
                 font-family: 'Nunito';
                 color: white;
                 background-color: rgba(15,15,15,1);
+            }
+
+            button {
+                font-size: 16px;
+                background-color: rgba(108, 172, 67, 1);
+                color: white;
+                padding: 5px;
+                border-radius: 5px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+            h4 {
+                margin: 10px;
+            }
+
+            button:hover {
+                opacity: 0.8;
+                transition: opacity 0.4s;
+            }
+
+            .textbox {
+                font-size: 14px;
+                text-align: center;
+                padding: 5px;
+                border-radius: 5px;
+            }
+
+            input:focus {
+                border-color: rgba(108, 172, 67, 1) !important; 
             }
         </style>
     </head>

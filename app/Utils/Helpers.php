@@ -22,14 +22,12 @@
         }
     
         // Optional Authentication:
-        curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-        //curl_setopt($curl, CURLOPT_USERPWD, "username:password");
-    
+        curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); 
+
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
     
         $result = curl_exec($curl);
-        //print_r(curl_getinfo($curl));
         curl_close($curl);
     
         return $result;
@@ -41,7 +39,6 @@
         $zip1 = fixZipCode($zip1);
         $zip2 = fixZipCode($zip2);
         $api = $_ENV["ZIPCODE_API_KEY"];
-        //example: http://www.zipcodeapicom/rest/D81imitJSUY9xiwfhDdRT4ImdHbtkHkodE98S7IOdymVM746u8Gl1k1z3En5ddNz/match-close.json/00544,00501/1000/mile
         $url = "http://www.zipcodeapi.com/rest/{$api}/match-close.json/{$zip1},{$zip2}/{$distance}/mile";
 
         return $url;

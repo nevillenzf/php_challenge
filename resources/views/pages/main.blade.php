@@ -26,7 +26,7 @@
         @include('shared.navbar', ['page' => 'Upload'])
         @include('shared.sidebar', ['page' => 'Upload'])
 
-        <h2 class="myTitle">Upload XML, CSV file</h2>
+        <h2 class="myTitle">Upload CSV file</h2>
         <form action="upload" method="POST" enctype="multipart/form-data" >
             <input type="file" name="zipcodes" class="inputWrapper"/>
             @csrf 

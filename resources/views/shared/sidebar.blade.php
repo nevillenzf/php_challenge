@@ -9,9 +9,13 @@
                 height: 100vh;
                 position: fixed;
                 left: 0px;
-                background-color: rgba(143, 196, 130, 1);
-                border-right: 1px solid grey;
+                background-color: rgba(15,15,15, 1);
+                border-right: 1px solid rgba(88, 88, 88, 1);
                 z-index: 1;
+        }
+        .selected {
+            color: rgba(108, 172, 67, 1);
+            list-style-type : disc;
         }
 
         .sbContent {
@@ -19,7 +23,7 @@
         }
 
         a:hover{
-            color: white;
+            color: rgba(108, 172, 67, 1);
             transition: color 0.4s;
         }
 
@@ -27,8 +31,22 @@
 
     <div class= "sbContainer">
         <ul class="sbContent">
-            <li><a href ="/">Upload</a></li>
-            <li><a href = "/search">Search</a></li>
-            <li><a href = "/query">Query </a></li>
+            @foreach (array("Upload","Search","Query") as $item)
+                @if ($item == $page)
+                    @if ($item == "Upload")
+                        <li class="selected"><a href ="/">Upload</a></li>
+                    @else
+                        <li class="selected"><a href = "/{{$item}}">{{$item}}</a></li>
+                    @endif
+                @else
+                    @if ($item == "Upload")
+                        <li><a href ="/">Upload</a></li>
+                    @else
+                        <li><a href = "/{{$item}}">{{$item}}</a></li>
+                    @endif
+                @endif
+                    
+            
+            @endforeach
         </ul>
     </div>

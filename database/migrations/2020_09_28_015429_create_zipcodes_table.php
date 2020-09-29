@@ -14,7 +14,7 @@ class CreateZipcodesTable extends Migration
     public function up()
     {
         Schema::create('zipcodes', function (Blueprint $table) {
-            $table->id();
+            $table->dropColumn('id');
             $table->integer('ZipCode')->unique();
             $table->string('MixedCity');
             $table->string('StateCode');

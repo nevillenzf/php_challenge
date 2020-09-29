@@ -22,9 +22,11 @@ class ZipsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($row)
     {
-        //
+        //insert new row into Database
+        print_r("cool");
+        print_r($row);
     }
 
     /**
@@ -81,5 +83,11 @@ class ZipsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function all(){
+        $zipcodes = DB::table('zipcodes')->get();
+
+        return $zipcodes;
     }
 }

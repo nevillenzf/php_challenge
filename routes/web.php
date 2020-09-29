@@ -18,8 +18,13 @@ Route::get('/', "PageController@main")->name("main");
 Route::post('/upload', "FileController@parseFile");
 
 Route::get('/search', "PageController@search")->name("search");
-
+Route::get('/Search', "PageController@search");
+Route::post('/search', function(){
+    return "poop";
+});
 Route::get('/query', "PageController@query")->name("query");
+Route::get('/Query', "PageController@query");
+Route::post('/query', "PageController@queryAPI");
 
 Route::fallback(function(){
     return "Hello u should turn back";

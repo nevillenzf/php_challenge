@@ -25,7 +25,6 @@ class ZipsController extends Controller
     public function create($row)
     {
         //insert new row into Database
-        print_r("cool");
         print_r($row);
     }
 

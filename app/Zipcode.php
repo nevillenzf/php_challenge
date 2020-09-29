@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Zipcode extends Model
 {
-    //table
+    //table used
     protected $table = 'zipcodes';
 
     //primary key
     protected $primaryKey = 'ZipCode';
     public $incrementing = false;
 
-    //Allows mass insertion
+    //allows mass insertion
     protected $fillable = array('ZipCode', 'MixedCity');
 
     //timestamp

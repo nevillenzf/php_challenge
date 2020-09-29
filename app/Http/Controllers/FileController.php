@@ -8,24 +8,20 @@ use App\Zipcode;
 
 class FileController extends Controller
 {
-    //
     public function parseFile(Request $req){
         $file = $req->file();
         $allowed = array('csv', 'xml');
-        //make sure that there's a file
+
+        //Make sure that there's a file
         if (!$file){
             return back();
-            //return redirect()->route("main") //WORKS TOO
         }
 
         $ext = pathinfo($file["zipcodes"]->getClientOriginalName(), PATHINFO_EXTENSION);
-        //$ext = $file["zipcodes"]->extension();
 
         //Return to main page after upload success/ fail.
         header('Refresh: 3;url=/');
-
         
-        //echo $ext;
         if ($ext == $allowed[0]){
             //Parse Csv to an array
             $data = $this->csvToArray($file["zipcodes"]);
@@ -40,7 +36,6 @@ class FileController extends Controller
         }
         else if ($ext == $allowed[1]){
             //Parse xml to an array
-            //$contents = file_get_contents($file["zipcodes"]);
             $data = $this->namespacedXMLToArray($file["zipcodes"]->path());
             print_r($data);
         }
@@ -49,8 +44,7 @@ class FileController extends Controller
         }
     }
 
-    private function csvToArray($filename = '', $delimiter = ',')
-    {
+    private function csvToArray($filename = '', $delimiter = ','){
         if (!file_exists($filename) || !is_readable($filename))
             return false;
 
@@ -71,8 +65,7 @@ class FileController extends Controller
         return $data;
     }
 
-    private function namespacedXMLToArray($xml)
-    {
+    private function namespacedXMLToArray($xml){
         $xml_str = simplexml_load_string($xml, "SimpleXMLElement", LIBXML_NOCDATA);
         $json = json_encode($xml_str);
         $array = json_decode($json,TRUE);
@@ -87,9 +80,9 @@ class FileController extends Controller
         $item->City = $row["City"];
         $item->MixedCity = $row["MixedCity"];
         $item->StateCode = $row["StateCode"];
-
         $item->County = $row["County"];
         $item->MixedCounty = $row["MixedCounty"];
+
         if (!$row["StateFIPS"]){
             $item->StateFIPS = null;
         }

@@ -65,15 +65,15 @@
                 @csrf 
                 <div class="queries">
                     <div class="subquery">
-                        <label for="zip"><h4>Zipcode</h4></label><br>
+                        <label for="zip"><h4>Zipcode</h4></label>
                         <input type="number" class="textbox" name="zip">
                     </div>
                     <div class="subquery">
-                        <label for="city"><h4>City</h4></label><br>
+                        <label for="city"><h4>City</h4></label>
                         <input type="text" class="textbox" name="city">
                     </div>
                     <div class="subquery">
-                        <label for="state"><h4>State</h4></label><br>
+                        <label for="state"><h4>State</h4></label>
                         <select class="textbox" name="state">
                             @include('shared.stateoptions');
                         </select><br>

@@ -22,7 +22,9 @@ This project was created using Laravel 7, PostgreSQL, PHP 7.4 and Blade Templata
 Option 1 of the Challenge was chosen and the 3 main requirements were fulfilled:
 
     1. A View accepting a CSV file, parsing it, and saving the Zipcode data into the PostgreSQL database.
-    2. A View allowing for queries/ searches on the local Postgres database, ONLY when stricter parameters (Any of the following: STATE, ZIPCODE, CITY) are set to prevent data overload.
-    3. A View that queries the Zipcode API for the distance between 2 zipcodes ONLY if the distance was within the distance provided in miles.
+    2. A View allowing for queries/ searches on the local Postgres database, ONLY when stricter parameters 
+       (Any of the following: STATE, ZIPCODE, CITY) are set to prevent data overload.
+    3. A View that queries the Zipcode API for the distance between 2 zipcodes ONLY if 
+       the distance was within the distance provided in miles.
     
 

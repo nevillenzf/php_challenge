@@ -25,7 +25,7 @@
 
     <div class= "navBarContainer">
         <div class="navLeft"> 
-            <h2 class="title"><a href="/"><span class="companyName">EatStreet</span>Challenge </a></h2>
+            <h2 class="title"><a href="/"><span class="companyName">ZipLoc</span>Hub </a></h2>
         </div>
         <div class="navRight"> 
             <h3>{{$page}}</h3>

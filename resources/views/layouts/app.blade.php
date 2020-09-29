@@ -50,6 +50,34 @@
             input:focus {
                 border-color: rgba(108, 172, 67, 1) !important; 
             }
+
+            ::-webkit-scrollbar {
+                height: 12px;
+                width: 12px;
+                background: #000;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background: rgba(108, 172, 67, 1);
+                -webkit-border-radius: 1ex;
+                -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+            }
+
+            ::-webkit-scrollbar-corner {
+                background: #000;
+            }
+            .wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                width: 100vw;
+                height: 100vh
+            }
+            .inputWrapper {
+                text-align: center;
+                margin: auto;
+            }
         </style>
     </head>
     <body class="antialiased">

@@ -2,19 +2,6 @@
 
 @section('content')
     <style>
-        .wrapper {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-                width: 100vw;
-                height: 100vh;
-                text-align: center;
-        }
-        .inputWrapper {
-            text-align: center;
-            margin: auto;
-        }
         .restricted{
             color: rgba(235, 64, 52, 1);
         }
